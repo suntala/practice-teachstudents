@@ -24,4 +24,9 @@ router.post('/close-enrolment', async (req, res, next) => {
     res.send(newStatus)
 })
 
+router.post('/del', async (req, res, next) => {
+    await ClassService.del(req.body.classID)
+    res.send('OK!')
+})
+
 module.exports = router;

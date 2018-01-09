@@ -2,6 +2,30 @@ import test from 'ava'
 import request from 'supertest'
 import app from '../../app'
 
+
+
+test('Delete a course', async t => {
+    const input = {subject: 'Test', level: 1, capacity: 4, currentStudents: [], totalSessions: 5, startTime: 900, endTime: 1000, enrolling: false}
+
+    const course = (await request(app)
+        .post('/course/add')
+        .send(input))
+        .body
+
+    // console.log(course)
+
+    const res = await request(app)
+        .post('/course/del')
+        .send({classID: course.classID})
+
+    // console.log(res.body)
+    
+    t.is(res.status, 200)
+    t.is(res.text, 'OK!')
+})
+
+
+
 test('Add a course', async t => {
     const input = {subject: 'Test', level: 1, capacity: 4, currentStudents: [], totalSessions: 5}
 
@@ -18,6 +42,7 @@ test('Add a course', async t => {
     t.is(res.body.totalSessions, input.totalSessions)
     t.deepEqual(res.body.currentStudents, input.currentStudents)
 })
+
 
 test('Close enrolment', async t => {
     const input = {subject: 'Test', level: 1, capacity: 4, currentStudents: [], totalSessions: 5 , startTime: 900, endTime: 1000, enrolling: false}
@@ -61,3 +86,4 @@ test('Close enrolment', async t => {
     t.is(newCourse.enrolling, true)
     // t.is
 })
+

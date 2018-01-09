@@ -25,5 +25,15 @@ router.post('/give-options', async (req, res, next) => {
     res.send(courseSelection)
 })
 
+router.post('/del', async (req, res, next) => {
+    const deletion = await StudentService.del(req.body.studentID)
+    res.send('OK!')
+})
+
+// router.post('/del', async (req, res, next) => {
+//     await StudentService.del(req.body.studentID)
+//     res.send('OK!')
+// })
+
 
 module.exports = router;

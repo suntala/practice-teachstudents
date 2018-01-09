@@ -5,20 +5,20 @@ const StudentService = require('./student-service')
 
 
 
-const add = async (course) => {
+const add = (course) => {
     return ClassModel.create(course)
 }
 
-const findAll = async () => {
+const findAll = () => {
     return ClassModel.find()
 }
 
 
-const del = async (classID) => {
+const del = (classID) => {
     return ClassModel.remove({ classID })
 }
 
-const find = async (classID) => {
+const find = (classID) => {
     return ClassModel.findOne({ classID })
 }
 

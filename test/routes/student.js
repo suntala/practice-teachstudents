@@ -107,6 +107,25 @@ test('Give student options, already enrolled', async t => {
 
 
 
+test('Delete a student', async t => {
+    const input = {name:'TestStudent', level: 1, schedule: [], pGrade: 'F'}
+
+    const student = (await request(app)
+        .post('/student/add')
+        .send(input))
+        .body  
+
+    const res = await request(app)
+        .post('/student/del')
+        .send({studentID: student.studentID})
+
+    console.log(res.body)
+    
+    t.is(res.status, 200)
+    // t.is(res.body, 'OK!')
+    t.is(res.text, 'OK!')
+})
+
 
 
 
