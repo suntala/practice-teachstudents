@@ -46,6 +46,7 @@ STU create a remedial class with homework helpers—> gather students who have F
 ===============
 axios.post('/course/add', {subject: 'CS', level: 1, capacity: 10, currentStudents: [], totalSessions: 8}).then(res => console.log(res.data))
 axios.post('/course/add', {subject: 'German', level: 1, capacity: 4, currentStudents: [], totalSessions: 5}).then(res => console.log(res.data))
+axios.post('/course/add', {subject: 'German', level: 1, capacity: 3, currentStudents: [], totalSessions: 10, startTime: 900, endTime: 1000}).then(res => console.log(res.data))
 
 
 axios.post('/student/add', {name: 'Rubyred', level: 1, schedule: [], pGrade: 'A'}).then(res => console.log(res.data))

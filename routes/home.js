@@ -15,9 +15,9 @@ router.post('/', async (req, res, next) => {
 })
 */
 
-router.post('/course/add', async (req, res, next) => {
-    const course = await ClassService.add(req.body)
-    res.send(course)
-})
+// router.post('/course/add', async (req, res, next) => {
+//     const course = await ClassService.add(req.body)
+//     res.send(course)
+// })
 
 module.exports = router;

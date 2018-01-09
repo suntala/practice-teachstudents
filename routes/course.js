@@ -3,6 +3,10 @@ const router = express.Router();
 const StudentService = require('../services/student-service') //replace with whatever service you have
 const ClassService = require('../services/class-service') //replace with whatever service you have
 
+router.post('/add', async (req, res, next) => {
+    const course = await ClassService.add(req.body)
+    res.send(course)
+})
 
 // router.get('/', async (req, res, next) => {
 //     const classes = await ClassService.findAll()
@@ -16,3 +20,5 @@ const ClassService = require('../services/class-service') //replace with whateve
 // })
 
 
+
+module.exports = router;

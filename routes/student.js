@@ -16,12 +16,12 @@ router.post('/add', async (req, res, next) => {
 })
 
 router.post('/add-to-course', async (req, res, next) => {
-    const newMatriculation = StudentService.addToCourse(req.body.studentID, req.body.classID)
+    const newMatriculation = await StudentService.addToCourse(req.body.studentID, req.body.classID)
     res.send(newMatriculation)
 })
 
 router.post('/give-options', async (req, res, next) => {
-    const courseSelection = StudentService.giveCourseOptions(req.body.studentID)
+    const courseSelection = await StudentService.giveCourseOptions(req.body.studentID)
     res.send(courseSelection)
 })
 

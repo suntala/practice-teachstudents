@@ -17,6 +17,12 @@ const ClassSchema = mongoose.Schema({
     currentStudents: [],
     totalSessions: {
         type: Number
+    },
+    startTime: {
+        type: Number
+    },
+    endTime: {
+        type: Number
     }
 })
 
