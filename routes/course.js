@@ -19,6 +19,9 @@ router.post('/add', async (req, res, next) => {
 //     res.send(course)
 // })
 
-
+router.post('/close-enrolment', async (req, res, next) => {
+    const newStatus = await ClassService.closeEnrolment()
+    res.send(newStatus)
+})
 
 module.exports = router;

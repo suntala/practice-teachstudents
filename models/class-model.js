@@ -23,6 +23,9 @@ const ClassSchema = mongoose.Schema({
     },
     endTime: {
         type: Number
+    },
+    enrolling: {
+        type: Boolean
     }
 })
 

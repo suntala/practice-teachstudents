@@ -30,16 +30,34 @@ const edit = async (classID, data) => {
     if (typeof data.capacity !== 'undefined'){ course.capacity = data.capacity }
     if (typeof data.currentStudents !== 'undefined'){ course.currentStudents = data.currentStudents } 
     if (typeof data.totalSessions !== 'undefined'){ course.totalSessions = data.totalSessions }
+    if (typeof data.enrolling !== 'undefined'){ course.enrolling = data.enrolling }
+
 
     const newCourse = await course.save();
     return newCourse;
 }
 
+const closeEnrolment = async () => {
+    const courses = await findAll()
+
+    for (let i = 0; i < courses.length; i++) {
+        if (courses[i].currentStudents.length < courses[i].capacity) {
+            await edit(courses[i].classID, {enrolling: true})
+        }
+        else {
+            await edit(courses[i].classID, {enrolling: false})
+        }
+    }
+
+    const newCourses = await findAll()
+    return newCourses
+}
 
 module.exports = {
     findAll,
     add,
     del,
     find,
-    edit
+    edit,
+    closeEnrolment
 }
