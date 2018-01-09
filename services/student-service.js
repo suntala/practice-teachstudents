@@ -61,6 +61,7 @@ const checkAvailableClasses = async (studentID, subject) => {
             eligible.push(courses[j])
         }
     }
+    // console.log(eligible)
 
     if (student.schedule.length == 0) {
         return eligible
@@ -71,6 +72,7 @@ const checkAvailableClasses = async (studentID, subject) => {
         for (let i = 0; i < student.schedule.length; i++) {
             busyTimes.push([student.schedule[i].startTime, student.schedule[i].endTime])
         }
+        // console.log(busyTimes)
     
         const selection = []
         for (let k = 0; k < eligible.length; k++) {
@@ -83,6 +85,7 @@ const checkAvailableClasses = async (studentID, subject) => {
         return selection
     }
 }
+//review the logic
 
 const giveCourseOptions = async (studentID) => {
     const student = await find(studentID)
@@ -105,7 +108,7 @@ const giveCourseOptions = async (studentID) => {
         germanSelection = {germanClasses: "Already enrolled."}
    }
 
-    console.log([csSelection, germanSelection])
+    // console.log([csSelection, germanSelection])
     return [csSelection, germanSelection]
 }  
 

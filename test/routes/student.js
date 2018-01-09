@@ -79,7 +79,7 @@ test('Give student options, already enrolled', async t => {
         .send(inputS))
         .body 
     
-    const inputC = {subject: 'TestCourse', level: 1, capacity: 4, currentStudents: [], totalSessions: 5}
+    const inputC = {subject: 'CS', level: 1, capacity: 4, currentStudents: [], totalSessions: 5, startTime: 1500, endTime: 1600}
 
     const course = (await request(app)
         .post('/course/add')
@@ -109,7 +109,7 @@ test('Delete a student', async t => {
         .post('/student/del')
         .send({studentID: student.studentID})
 
-    console.log(res.body)
+    // console.log(res.body)
     
     t.is(res.status, 200)
     t.is(res.text, 'OK!')

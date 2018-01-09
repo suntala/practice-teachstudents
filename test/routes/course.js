@@ -35,7 +35,7 @@ test('Add a course', async t => {
 })
 
 
-test('Close enrolment', async t => {
+test('Enrolling to true', async t => {
     const input = {subject: 'Test', level: 1, capacity: 4, currentStudents: [], totalSessions: 5 , startTime: 900, endTime: 1000, enrolling: false}
 
     const course = (await request(app)
@@ -56,3 +56,24 @@ test('Close enrolment', async t => {
     t.is(newCourse.enrolling, true)
 })
 
+
+test('Enrolling to false', async t => {
+    const input = {subject: 'Test', level: 1, capacity: 4, currentStudents: ["T", "R", "E", "X"], totalSessions: 5 , startTime: 900, endTime: 1000, enrolling: true}
+
+    const course = (await request(app)
+        .post('/course/add')
+        .send(input))
+        .body
+    
+    const res = await request(app)
+        .post('/course/close-enrolment')
+
+    function rightID(element) {
+        return element.classID == course.classID
+    }
+
+    const newCourse = res.body.find(rightID);
+
+    t.is(res.status, 200)
+    t.is(newCourse.enrolling, false)
+})
