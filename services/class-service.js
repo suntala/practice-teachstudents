@@ -4,7 +4,6 @@ const StudentModel = require('../models/student-model')   //change to whatever m
 const StudentService = require('./student-service')
 
 
-
 const add = (course) => {
     return ClassModel.create(course)
 }

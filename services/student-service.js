@@ -35,7 +35,6 @@ const edit = async (studentID, data) => {
 
 const checkForSubject = async (studentID, subject) => {
     const student = await find(studentID)
-    // console.log(student)
     const takingClass = []
     for (let i = 0; i < student.schedule.length; i++) {
         if (student.schedule[i].subject == subject) {
@@ -50,18 +49,6 @@ const checkForSubject = async (studentID, subject) => {
     }
 }
 
-// const checkForSubject = async (studentID, subject) => {
-//     const student = await find(studentID)
-//     // console.log(student)
-//     for (let i = 0; i < student.schedule.length; i++) {
-//         if (student.schedule[i].subject == subject) {
-//             return true
-//         }
-//         else {
-//             return false
-//         }
-//     }
-// }
 
 
 const checkAvailableClasses = async (studentID, subject) => {
@@ -96,7 +83,6 @@ const checkAvailableClasses = async (studentID, subject) => {
         return selection
     }
 }
-// if no busy time then eligible equals selection
 
 const giveCourseOptions = async (studentID) => {
     const student = await find(studentID)
@@ -104,8 +90,6 @@ const giveCourseOptions = async (studentID) => {
     const checkGerman = await checkForSubject(studentID, "German")
 
     let csSelection;
-    // if (checkCS == false) {
-    // if (true) {
     if (checkCS == false) {
         csSelection = {csClasses: await checkAvailableClasses(studentID, 'CS')}
     }
@@ -121,21 +105,9 @@ const giveCourseOptions = async (studentID) => {
         germanSelection = {germanClasses: "Already enrolled."}
    }
 
-    // console.log([csSelection, germanSelection, germanSelection.germanClasses[0]])
     console.log([csSelection, germanSelection])
     return [csSelection, germanSelection]
-    //check if student has CS and German
-    //if not go through the courses and give options
-} 
-//correct this to make sure we get the right response for enrolment 
-// --> have a response for no current classes created
-
-
-
-
-//STU matching student with course (giving options to the student) 
-//—> if course teaches the subject at the correct level then provide name as an option 
-//schedule is like this: 
+}  
 
 
 const addToCourse = async (studentID, classID) => {
@@ -145,52 +117,11 @@ const addToCourse = async (studentID, classID) => {
     course.currentStudents.push(student.name)
     const newStudentSched = student.schedule
     const newCourseStudents = course.currentStudents
-    // const newStudentSched = student.schedule.push(course)
-    // const newCourseStudents = course.currentStudents.push(student.name)
     const newStudent = await edit(studentID, {schedule: newStudentSched})
     const newCourse = await ClassService.edit(classID, {currentStudents: newCourseStudents})
-    // return [newStudent, newCourse]
     return [newStudent, newCourse]
 }
 
-
-
-
-// const addToCourse = async (studentID, classID) => {
-//     const student = await find(studentID)
-//     const course = await ClassService.find(classID)
-//     student.schedule.push(course)
-//     course.currentStudents.push(student.name)
-//     // console.log([student, course])
-//     return [student, course]
-//     await student.save();
-//     await course.save();
-// }
-//--> figure out about this!!!
-
-// const addToCourse = async (studentID, classID) => {
-//     const student = await find(studentID)
-//     const course = await ClassService.find(classID)
-//     student.schedule.push(course)
-//     course.currentStudents.push(student.name)
-//     const newStudent = await student.save();
-//     const newCourse = await course.save();
-//     return [newStudent, newCourse]
-// }
-
-
-// const addToCourse = async (studentID, classID) => {
-//     const student = await StudentService.find(studentID)
-//     // console.log(student)
-//     const course = await ClassService.find(classID)
-//     student.schedule.push(course)
-//     course.currentStudents.push(student.name)
-//     // console.log(student)
-//     const newStudent = await student.save();
-//     const newCourse = await course.save();
-//     console.log(student)
-//     return [newStudent, newCourse]
-// }  --> strange console.log after saving the student doesn't work!
 
 module.exports = {
     findAll,
