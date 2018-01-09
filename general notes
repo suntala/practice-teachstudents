@@ -9,7 +9,7 @@ level
 schedule (the subject and the day taking it) {{{subjects interested in along with grade
     (can have this be only two subject school: CS, German )}}}
     (combine with above) available times --> have it be only during the weekend 
-    (and everyone is theoretically available from 8 to 8)
+    (and everyone is theoretically available from 8 to 8) --> actually just have it be on a saturday
 participation grade
 
 
@@ -23,7 +23,7 @@ level
 capacity
 current students
 total sessions
-
+time (start and end)
 
 
 
@@ -39,3 +39,17 @@ CLA canceling a class —> check number of students there and if there are fewer
 STU get participation grade: hold class and get attendance —> cycle through number of sessions and record the number of times student is there (A for over 90%, B for 80 to 90%, F for the rest)
 
 STU create a remedial class with homework helpers—> gather students who have F into as few tutoring groups as possible (based on their open times)
+
+
+
+
+===============
+axios.post('/course/add', {subject: 'CS', level: 1, capacity: 10, currentStudents: [], totalSessions: 8}).then(res => console.log(res.data))
+axios.post('/course/add', {subject: 'German', level: 1, capacity: 4, currentStudents: [], totalSessions: 5}).then(res => console.log(res.data))
+
+
+axios.post('/student/add', {name: 'Rubyred', level: 1, schedule: [], pGrade: 'A'}).then(res => console.log(res.data))
+
+axios.post('/student/add-to-course', {studentID: 1, classID: 1}).then(res => console.log(res.data))
+
+axios.post('/student/give-options', {studentID: 1}).then(res => console.log(res.data))

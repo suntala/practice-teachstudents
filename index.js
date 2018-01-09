@@ -1,9 +1,11 @@
 const app = require('./app')
-// app.listen(3000, () => {
-//     console.log('Server listening.')
-// })
+app.listen(3000, () => {
+    console.log('Server listening.')
+})
 
 
+
+/*
 /////////////////
 
 const StudentModel = require('../models/student-model')   //change to whatever model name you have (2)
@@ -21,3 +23,4 @@ const main = async () => {
  main();
 
  ////////////////////////
+ */

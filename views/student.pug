@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    h1 Students
+    if students.length
+        table
+            thead   
+                tr
+                    th Name
+                    th Level
+                    th Schedule
+                    th Grade
+            tbody
+                each student in students
+                    tr
+                        td #{student.name}
+                        td #{student.level}
+                        td #{student.schedule}
+                        td #{student.pGrade}
+    else
+        p There are currently no students registered.
+
+
+
+
+
+
+
+
+
+
+
+
+//- extends layout
+
+//- block content
+//-     h1 Student #{students[0].name}
+//-     each student in students
+//-         student.name
+//-     p

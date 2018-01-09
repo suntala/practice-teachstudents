@@ -10,9 +10,7 @@ const StudentSchema = mongoose.Schema({
     level: {
         type: Number
     },
-    schedule: {
-        type: []
-    },
+    schedule: [],
     pGrade: {
         type: String
     }
@@ -21,3 +19,30 @@ const StudentSchema = mongoose.Schema({
 
 StudentSchema.plugin(AutoIncrement, { inc_field: 'studentID' })  //change to whatever the model is called (helps to give it special name instead of just id) (1)
 module.exports = mongoose.model('Student', StudentSchema)  //change to whatever the model is called (2)
+
+/*
+const ClassSchema = mongoose.Schema({
+    subject: {
+        type: String,
+        required: true
+    },
+    level: {
+        type: Number,
+        required: true
+    },
+    capacity: {
+        type: Number
+    },
+    currentStudents: [],
+    totalSessions: {
+        type: Number
+    },
+    startTime: {
+        type: Number
+    },
+    endTime: {
+        type: Number
+    }
+})
+
+*/

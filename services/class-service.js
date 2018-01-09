@@ -13,6 +13,7 @@ const findAll = async () => {
     return ClassModel.find()
 }
 
+
 const del = async (classID) => {
     return ClassModel.remove({ classID })
 }

@@ -5,19 +5,16 @@ const ClassService = require('../services/class-service') //replace with whateve
 
 
 router.get('/', async (req, res, next) => {
-    res.render('index')
+    const students = await StudentService.findAll()
+    res.render('student', { students })
 });
 
-/*
-router.post('/', async (req, res, next) => {
-    const landlord = await LandlordService.add(req.body)
-    res.send(landlord)
-})
-*/
 
-router.post('/course/add', async (req, res, next) => {
-    const course = await ClassService.add(req.body)
-    res.send(course)
+router.post('/add', async (req, res, next) => {
+    const student = await StudentService.add(req.body)
+    res.send(student)
 })
+
+
 
 module.exports = router;
