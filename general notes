@@ -1,0 +1,41 @@
+BRAINSTORMING ABOUT THE PROJECT
+
+
+
+
+STUDENT MODEL
+name
+level
+schedule (the subject and the day taking it) {{{subjects interested in along with grade
+    (can have this be only two subject school: CS, German )}}}
+    (combine with above) available times --> have it be only during the weekend 
+    (and everyone is theoretically available from 8 to 8)
+participation grade
+
+
+TEACHER MODEL-->REPLACE WITH CLASS MODEL
+name
+subjects taught, level, capacity, occupied spots(names of participating students), number of sessions (object)
+
+CLASS MODEL
+subject
+level
+capacity
+current students
+total sessions
+
+
+
+
+SERVICES
+the basic services
+
+STU matching student with teacher (giving options to the student) —> if teacher teaches the subject at the correct level then provide name as an option along with review
+
+CLA student enters the class —> update the particular class with the student’s name
+
+CLA canceling a class —> check number of students there and if there are fewer than half the capacity, cancel the class and send matching student service to each of the people getting canceled
+
+STU get participation grade: hold class and get attendance —> cycle through number of sessions and record the number of times student is there (A for over 90%, B for 80 to 90%, F for the rest)
+
+STU create a remedial class with homework helpers—> gather students who have F into as few tutoring groups as possible (based on their open times)
